@@ -318,5 +318,25 @@ var Marker = function Marker(_ref) {
   return null;
 };
 
-export { Map, MapContext, MapkitContext, MapkitProvider, Marker, useMap };
+var Annotation = function Annotation(_ref) {
+  var latitude = _ref.latitude,
+      longitude = _ref.longitude,
+      factory = _ref.factory,
+      options = _objectWithoutPropertiesLoose(_ref, ["latitude", "longitude", "factory"]);
+
+  var _React$useContext = React.useContext(MapContext),
+      mapkit = _React$useContext.mapkit,
+      map = _React$useContext.map;
+
+  var marker = React.useRef();
+  React.useEffect(function () {
+    if (mapkit && map) {
+      marker.current = new mapkit.Annotation(createCoordinate(latitude, longitude), factory, propsToMarkerConstructionOptions(options));
+      map.addAnnotation(marker.current);
+    }
+  }, [mapkit, map, latitude, longitude, factory, options]);
+  return null;
+};
+
+export { Annotation, Map, MapContext, MapkitContext, MapkitProvider, Marker, useMap };
 //# sourceMappingURL=react-mapkit.esm.js.map

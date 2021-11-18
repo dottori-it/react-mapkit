@@ -1,6 +1,7 @@
 declare type Merge<M, N> = Omit<M, Extract<keyof M, keyof N>> & N;
 declare type ConstructorParameters<T> = T extends new (...args: infer U) => any ? U : never;
 declare type MapConstructionOptions = NonNullable<ConstructorParameters<typeof mapkit.Map>[1]>;
+declare type AnnotationConstructionOptions = NonNullable<ConstructorParameters<typeof mapkit.Annotation>[1]>;
 declare type MarkerConstructionOptions = NonNullable<ConstructorParameters<typeof mapkit.MarkerAnnotation>[1]>;
 declare type PaddingConstructorOptions = NonNullable<ConstructorParameters<typeof mapkit.Padding>[0]>;
 export declare type NumberTuple = [number, number];
@@ -61,6 +62,9 @@ export declare const propsToMapConstructionOptions: ({ visibleMapRect, region, c
     center: mapkit.Coordinate | undefined;
     padding: mapkit.Padding;
 };
+export declare type AnnotationOptions = Merge<AnnotationConstructionOptions, {
+    padding?: PaddingType;
+}>;
 export declare type MarkerOptions = Merge<MarkerConstructionOptions, {
     padding?: PaddingType;
 }>;
