@@ -25,7 +25,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "typeRoots": ["types", "node_modules/@types"],
-    "jsx": "react"
+    "jsx": "react",
+    "newLine": "lf"
   },
   "exclude": ["node_modules", "dist", "scripts"]
 }
