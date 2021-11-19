@@ -30,6 +30,9 @@ export const Marker: React.FC<MarkerProps> = ({
 
       map.addAnnotation(marker.current)
     }
+    return () => {
+      marker.current && map && map.removeAnnotation(marker.current)
+    }
   }, [mapkit, map])
 
   return null

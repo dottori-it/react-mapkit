@@ -8,7 +8,7 @@ node_modules
 .rts2_cache_umd
 
 /tokengen/*.p8
-/devToken.js
+/devToken.ts
 
 /yarn-error.log
 /storybook-static
