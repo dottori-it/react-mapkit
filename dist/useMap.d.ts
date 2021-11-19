@@ -1,11 +1,7 @@
 import React from 'react';
+import { MapOptions } from './utils';
 import { NumberTuple, Rect, RegionType } from './utils';
-export declare const useMap: (defaultOptions?: Pick<mapkit.MapConstructorOptions, "rotation" | "tintColor" | "colorScheme" | "mapType" | "showsMapTypeControl" | "isRotationEnabled" | "showsCompass" | "isZoomEnabled" | "showsZoomControl" | "isScrollEnabled" | "showsScale" | "annotationForCluster" | "annotations" | "selectedAnnotation" | "overlays" | "selectedOverlay" | "showsPointsOfInterest" | "showsUserLocation" | "tracksUserLocation" | "showsUserLocationControl"> & {
-    visibleMapRect?: Rect | undefined;
-    region?: RegionType | undefined;
-    center?: NumberTuple | undefined;
-    padding?: number | mapkit.PaddingConstructorOptions | undefined;
-}) => {
+export declare const useMap: (defaultOptions?: MapOptions) => {
     mapkit: typeof mapkit | undefined;
     map: mapkit.Map | undefined;
     mapProps: {

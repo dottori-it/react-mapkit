@@ -31,12 +31,7 @@ export declare type MapOptions = Merge<MapConstructionOptions, {
     center?: NumberTuple;
     padding?: PaddingType;
 }>;
-export declare const propsToMapConstructionOptions: ({ visibleMapRect, region, center, padding, ...options }: Merge<mapkit.MapConstructorOptions, {
-    visibleMapRect?: Rect | undefined;
-    region?: RegionType | undefined;
-    center?: NumberTuple | undefined;
-    padding?: number | mapkit.PaddingConstructorOptions | undefined;
-}>) => {
+export declare const propsToMapConstructionOptions: ({ visibleMapRect, region, center, padding, ...options }: MapOptions) => {
     rotation?: number | undefined;
     tintColor?: string | undefined;
     colorScheme?: string | undefined;
@@ -68,9 +63,7 @@ export declare type AnnotationOptions = Merge<AnnotationConstructionOptions, {
 export declare type MarkerOptions = Merge<MarkerConstructionOptions, {
     padding?: PaddingType;
 }>;
-export declare const propsToMarkerConstructionOptions: ({ padding, ...options }: Merge<mapkit.MarkerAnnotationConstructorOptions, {
-    padding?: number | mapkit.PaddingConstructorOptions | undefined;
-}>) => {
+export declare const propsToMarkerConstructionOptions: ({ padding, ...options }: MarkerOptions) => {
     color?: string | undefined;
     glyphColor?: string | undefined;
     glyphText?: string | undefined;

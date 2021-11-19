@@ -82,6 +82,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
+var _excluded = ["visibleMapRect", "region", "center", "padding"],
+    _excluded2 = ["padding"];
+
 /* global mapkit */
 // Mapkit helpers
 var createPadding = function createPadding(padding) {
@@ -113,7 +116,7 @@ var propsToMapConstructionOptions = function propsToMapConstructionOptions(_ref)
       region = _ref.region,
       center = _ref.center,
       padding = _ref.padding,
-      options = _objectWithoutPropertiesLoose(_ref, ["visibleMapRect", "region", "center", "padding"]);
+      options = _objectWithoutPropertiesLoose(_ref, _excluded);
 
   return _extends({
     visibleMapRect: visibleMapRect && createMapRect.apply(void 0, visibleMapRect),
@@ -124,7 +127,7 @@ var propsToMapConstructionOptions = function propsToMapConstructionOptions(_ref)
 };
 var propsToMarkerConstructionOptions = function propsToMarkerConstructionOptions(_ref2) {
   var padding = _ref2.padding,
-      options = _objectWithoutPropertiesLoose(_ref2, ["padding"]);
+      options = _objectWithoutPropertiesLoose(_ref2, _excluded2);
 
   return _extends({
     padding: padding ? createPadding(padding) : createPadding(0)
@@ -209,6 +212,8 @@ var useMap = function useMap(defaultOptions) {
   };
 };
 
+var _excluded$1 = ["children"],
+    _excluded2$1 = ["tokenOrCallback", "language", "mapkit", "map", "mapRef"];
 var MapContext = /*#__PURE__*/React.createContext({
   map: undefined,
   mapkit: undefined
@@ -239,7 +244,7 @@ var MapContainer = function MapContainer(_ref2) {
 
 var CreateMap = function CreateMap(_ref3) {
   var children = _ref3.children,
-      defaultOptions = _objectWithoutPropertiesLoose(_ref3, ["children"]);
+      defaultOptions = _objectWithoutPropertiesLoose(_ref3, _excluded$1);
 
   var _useMap = useMap(defaultOptions),
       _useMap$mapProps = _useMap.mapProps,
@@ -265,7 +270,7 @@ var Map = function Map(_ref4) {
       mapkit = _ref4.mapkit,
       map = _ref4.map,
       mapRef = _ref4.mapRef,
-      props = _objectWithoutPropertiesLoose(_ref4, ["tokenOrCallback", "language", "mapkit", "map", "mapRef"]);
+      props = _objectWithoutPropertiesLoose(_ref4, _excluded2$1);
 
   var context = React.useContext(MapkitContext); // map has already been created, we just need to setup the provider
 
@@ -299,10 +304,11 @@ var Map = function Map(_ref4) {
   });
 };
 
+var _excluded$2 = ["latitude", "longitude"];
 var Marker = function Marker(_ref) {
   var latitude = _ref.latitude,
       longitude = _ref.longitude,
-      options = _objectWithoutPropertiesLoose(_ref, ["latitude", "longitude"]);
+      options = _objectWithoutPropertiesLoose(_ref, _excluded$2);
 
   var _React$useContext = React.useContext(MapContext),
       mapkit = _React$useContext.mapkit,
@@ -322,11 +328,12 @@ var Marker = function Marker(_ref) {
   return null;
 };
 
+var _excluded$3 = ["latitude", "longitude", "factory"];
 var Annotation = function Annotation(_ref) {
   var latitude = _ref.latitude,
       longitude = _ref.longitude,
       factory = _ref.factory,
-      options = _objectWithoutPropertiesLoose(_ref, ["latitude", "longitude", "factory"]);
+      options = _objectWithoutPropertiesLoose(_ref, _excluded$3);
 
   var _React$useContext = React.useContext(MapContext),
       mapkit = _React$useContext.mapkit,
