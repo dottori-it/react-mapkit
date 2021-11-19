@@ -24,19 +24,22 @@ export const Annotation: React.FC<AnnotationProps> = ({
   ...options
 }) => {
   const { mapkit, map } = React.useContext(MapContext)
-  const marker = React.useRef<mapkit.Annotation>()
+  const annotation = React.useRef<mapkit.Annotation>()
 
   React.useEffect(() => {
     if (mapkit && map) {
-      marker.current = new mapkit.Annotation(
+      annotation.current = new mapkit.Annotation(
         createCoordinate(latitude, longitude),
         factory,
         propsToMarkerConstructionOptions(options),
       )
 
-      map.addAnnotation(marker.current)
+      map.addAnnotation(annotation.current)
     }
-  }, [mapkit, map, latitude, longitude, factory, options])
+    return () => {
+      annotation.current && map && map.removeAnnotation(annotation.current)
+    }
+  }, [mapkit, map])
 
   return null
 }
